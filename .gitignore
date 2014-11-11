@@ -1,7 +1,6 @@
 # Created by http://gitignore.io
 
 test/server/coverage
-logs/*.log
 
 ### OSX ###
 .DS_Store
@@ -86,7 +85,6 @@ lib-cov
 *.gz
 
 pids
-logs
 results
 
 npm-debug.log
