@@ -1,7 +1,7 @@
 # Created by http://gitignore.io
 
 test/server/coverage
-test/client/coverage
+logs/*.log
 
 ### OSX ###
 .DS_Store

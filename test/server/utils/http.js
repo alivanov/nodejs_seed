@@ -12,9 +12,9 @@ function initialize_app(callback) {
     app.server = http.createServer(app);
     app.io();
     //express settings
-    require(path.join(process.env.root, '/config/express'))(app);
+    require(path.join(process.env.ROOT_FOLDER, '/config/express'))(app);
     //Bootstrap routes
-    require(path.join(process.env.root, '/config/routes'))(app);
+    require(path.join(process.env.ROOT_FOLDER, '/config/routes'))(app);
     //Start the app by listening on <port>
     app.listen(process.env.PORT, function () {
         callback(app);

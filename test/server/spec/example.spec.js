@@ -8,7 +8,7 @@ var sinon = require('sinon');
 //--------------------------------
 // Local modules
 //--------------------------------
-var root = process.env.root;
+var root = process.env.ROOT_FOLDER;
 var http_test_utils = require(path.join(root, '/test/server/utils/http'));
 
 describe('HTTP tests:', function () {

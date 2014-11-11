@@ -8,17 +8,18 @@ module.exports = function(grunt) {
 
     nodemon: {
       dev: {
+        script: 'server.js',
         options: {
-          file: 'server.js',
-          ignoredFiles: ['README.md', 'node_modules/**'],
-          watchedExtensions: ['js'],
-          watchedFolders: ['app', 'config'],
-          debug: true,
-          delayTime: 1,
-          env: {
-            PORT: '3000'
-          },
-          cwd: __dirname
+          cwd: __dirname,
+          ignore: ['README.md', 'node_modules', 'public', 'test'],
+          ext: 'js',
+          delay: 1000,
+          legacyWatch: true
+        }
+      },
+      exec: {
+        options: {
+          exec: 'jshint'
         }
       }
     },
@@ -31,7 +32,7 @@ module.exports = function(grunt) {
         }
       },
       js: {
-        files: ['public/**/*.js', 'app/**/*.js'],
+        files: ['public/**/*.js'],
         tasks: ['jshint'],
         options: {
           livereload: true
@@ -92,12 +93,12 @@ module.exports = function(grunt) {
       dev : {
         NODE_ENV: 'development',
         PORT: 3000,
-        root: __dirname
+        ROOT_FOLDER: __dirname
       },
       test : {
         NODE_ENV: 'test',
         PORT: 3001,
-        root: __dirname
+        ROOT_FOLDER: __dirname
       }
     }
   });

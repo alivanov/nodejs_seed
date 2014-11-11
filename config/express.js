@@ -1,7 +1,9 @@
 /**
  * Module dependencies.
  */
-var express = require('express.io');
+var express = require('express.io'),
+    winston = require('winston'),
+    expressWinston = require('express-winston');
 
 module.exports = function (app) {
     app.set('showStackError', true);
@@ -17,7 +19,7 @@ module.exports = function (app) {
     //Setting the fav icon and static folder
     app.use(express.favicon());
     //Set views path, template engine and default layout
-    app.set('views', process.env.root + '/app/views');
+    app.set('views', process.env.ROOT_FOLDER + '/app/views');
     app.set('view engine', 'jade');
 
     //Enable jsonp
@@ -41,8 +43,28 @@ module.exports = function (app) {
             next();
         });
 
-        //routes should be at the last
+        // express-winston logger makes sense BEFORE the router.
+        app.use(expressWinston.logger({
+            transports: [
+                new winston.transports.Console({
+                    json: true,
+                    colorize: true
+                })
+            ]
+        }));
+
         app.use(app.router);
+
+        // express-winston errorLogger makes sense AFTER the router.
+        app.use(expressWinston.errorLogger({
+            transports: [
+                new winston.transports.Console({
+                    json: true,
+                    colorize: true
+                }),
+                new (winston.transports.File)({ filename: process.env.ROOT_FOLDER + '/logs/error.log' })
+            ]
+        }));
 
         // Handle 404
         app.use(function (req, res) {
