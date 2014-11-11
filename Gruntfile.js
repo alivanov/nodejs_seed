@@ -69,38 +69,11 @@ module.exports = function(grunt) {
       }
     },
 
-    karma: {
-      options: {
-        basePath: '',
-        frameworks: ['jasmine'],
-        files: ['dist/**/*.js', 'test/client/spec/**/*.js'],
-        reporters: ['dots', 'coverage'],
-        colors: true,
-        autoWatch: true,
-        singleRun: true,
-        browsers: ['PhantomJS'],
-        captureTimeout: 7000,
-        preprocessors: {
-          'dist/**/*.js': 'coverage'
-        },
-        coverageReporter: {
-          type : 'html',
-          dir : 'test/client/coverage'
-        },
-        plugins : [
-          'karma-jasmine',
-          'karma-phantomjs-launcher',
-          'karma-coverage'
-
-        ]
-      }
-    },
-
     mochaTest: {
       test: {
         options: {
           reporter: 'spec',
-          require: ['should', 'test/server/blanket'],
+          require: ['should', 'test/server/config', 'test/server/blanket'],
           timeout: 5000
         },
         src: ['test/server/spec/**/*.spec.js']
@@ -116,8 +89,8 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', [ 'build', 'concurrent']);
-  grunt.registerTask('build', [ 'jshint']);
+  grunt.registerTask('default', ['jshint', 'concurrent']);
+  grunt.registerTask('build', ['jshint', 'mochaTest']);
   grunt.registerTask('mocha', ['mochaTest']);
 
 };

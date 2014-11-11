@@ -1,14 +1,8 @@
 {
   "name": "value-node",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "value-node",
   "main": "server.js",
-  "directories": {
-    "example": "examples"
-  },
-  "scripts": {
-
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/holtherws/value-node.git"
@@ -20,26 +14,22 @@
   },
 
   "dependencies": {
-    "jade": "1.1.x",
-    "express.io": "~1.1.13"
+    "jade": "1.7.x",
+    "express.io": "1.1.x"
   },
 
   "devDependencies": {
-    "grunt-contrib-jshint": "0.8.x",
+    "grunt-contrib-jshint": "0.10.x",
     "grunt-nodemon": "0.1.x",
-    "grunt-concurrent": "^0.5.0",
-    "grunt-contrib-watch": "0.5.1",
-    "grunt-mocha-test": "0.8.x",
-    "grunt-karma": "~0.8.3",
-    "load-grunt-tasks": "0.1.x",
-    "karma-jasmine": "~0.2.2",
-    "karma-phantomjs-launcher": "~0.1.4",
-    "karma-coverage": "~0.2.4",
+    "grunt-concurrent": "1.0.x",
+    "grunt-contrib-watch": "0.6.x",
+    "grunt-mocha-test": "0.12.x",
+    "load-grunt-tasks": "1.0.x",
     "blanket": "1.1.x",
-    "lodash": "^2.4.1",
-    "should": "3.0.x",
-    "sinon": "~1.8.1",
-    "request": "~2.36.0"
+    "lodash": "2.4.x",
+    "should": "4.3.x",
+    "sinon": "1.11.x",
+    "request": "2.47.x"
   },
 
   "contributors": [
