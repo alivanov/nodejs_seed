@@ -1,29 +1,48 @@
 {
-  "name": "node-js-sample",
-  "version": "0.1.0",
-  "description": "A sample Node.js app using Express 4",
-  "main": "index.js",
+  "name": "value-node",
+  "version": "0.0.0",
+  "description": "value-node",
+  "main": "server.js",
+  "directories": {
+    "example": "examples"
+  },
   "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "express": "^4.0.0"
-  },
-  "engines": {
-    "node": "0.10.x"
+
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-sample"
+    "url": "git://github.com/holtherws/value-node.git"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "author": "Mark Pundsack",
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/holtherws/value-node/issues"
+  },
+
+  "dependencies": {
+    "jade": "1.1.x",
+    "express.io": "~1.1.13"
+  },
+
+  "devDependencies": {
+    "grunt-contrib-jshint": "0.8.x",
+    "grunt-nodemon": "0.1.x",
+    "grunt-concurrent": "^0.5.0",
+    "grunt-contrib-watch": "0.5.1",
+    "grunt-mocha-test": "0.8.x",
+    "grunt-karma": "~0.8.3",
+    "load-grunt-tasks": "0.1.x",
+    "karma-jasmine": "~0.2.2",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "karma-coverage": "~0.2.4",
+    "blanket": "1.1.x",
+    "lodash": "^2.4.1",
+    "should": "3.0.x",
+    "sinon": "~1.8.1",
+    "request": "~2.36.0"
+  },
+
   "contributors": [
-    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)"
-  ],
-  "license": "MIT"
+    "Alexey Ivanov <ivanov@intspirit.com>"
+  ]
 }
