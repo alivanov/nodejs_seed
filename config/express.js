@@ -16,10 +16,8 @@ module.exports = function (app) {
 
     //Setting the fav icon and static folder
     app.use(express.favicon());
-    app.use(express.static(process.env.rootFolder + '/dist'));
-
     //Set views path, template engine and default layout
-    app.set('views', process.env.rootFolder + '/app/views');
+    app.set('views', process.env.root + '/app/views');
     app.set('view engine', 'jade');
 
     //Enable jsonp
@@ -51,6 +49,7 @@ module.exports = function (app) {
             res.status(404);
             res.render('404.jade', {error: '404: page not found'});
         });
+
         // Handle 500
         app.use(function (error, req, res, next) {
             if (!error) next();

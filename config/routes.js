@@ -1,5 +1,5 @@
 var path = require('path'),
-    root = process.env.rootFolder,
+    root = process.env.root,
     helpers = require(path.join(root, 'app/helpers/api_helpers'));
 
 module.exports = function (app) {

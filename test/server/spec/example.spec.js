@@ -8,18 +8,17 @@ var sinon = require('sinon');
 //--------------------------------
 // Local modules
 //--------------------------------
-var root = process.env.rootFolder;
-var config = require(path.join(root, 'config/config'));
+var root = process.env.root;
 var http_test_utils = require(path.join(root, '/test/server/utils/http'));
 
 describe('HTTP tests:', function () {
     var app = null;
     var sandbox = null;
-    var base_address = 'http://127.0.0.1:' + config.port;
+    var base_address = 'http://127.0.0.1:' + process.env.PORT;
 
     before(function (done) {
         // Initialize Express app and start server in test mode
-        http_test_utils.initialize_app(config, function (new_app) {
+        http_test_utils.initialize_app(function (new_app) {
             app = new_app;
             done();
         });

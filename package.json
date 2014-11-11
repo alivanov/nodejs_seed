@@ -24,6 +24,7 @@
     "grunt-concurrent": "1.0.x",
     "grunt-contrib-watch": "0.6.x",
     "grunt-mocha-test": "0.12.x",
+    "grunt-env": "latest",
     "load-grunt-tasks": "1.0.x",
     "blanket": "1.1.x",
     "lodash": "2.4.x",

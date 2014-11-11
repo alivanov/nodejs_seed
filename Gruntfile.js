@@ -73,7 +73,7 @@ module.exports = function(grunt) {
       test: {
         options: {
           reporter: 'spec',
-          require: ['should', 'test/server/config', 'test/server/blanket'],
+          require: ['should', 'test/server/blanket'],
           timeout: 5000
         },
         src: ['test/server/spec/**/*.spec.js']
@@ -86,11 +86,24 @@ module.exports = function(grunt) {
         },
         src: ['test/server/spec/**/*.spec.js']
       }
+    },
+
+    env : {
+      dev : {
+        NODE_ENV: 'development',
+        PORT: 3000,
+        root: __dirname
+      },
+      test : {
+        NODE_ENV: 'test',
+        PORT: 3001,
+        root: __dirname
+      }
     }
   });
 
-  grunt.registerTask('default', ['jshint', 'concurrent']);
+  grunt.registerTask('default', ['env:dev', 'jshint', 'concurrent']);
   grunt.registerTask('build', ['jshint', 'mochaTest']);
-  grunt.registerTask('mocha', ['mochaTest']);
+  grunt.registerTask('mocha', ['env:test', 'mochaTest']);
 
 };

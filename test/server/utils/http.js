@@ -6,17 +6,17 @@ var path = require('path'),
     express = require('express.io'),
     request = require('request');
 
-function initialize_app(config, callback) {
+function initialize_app(callback) {
     // Init application
     var app = express();
     app.server = http.createServer(app);
     app.io();
     //express settings
-    require(path.join(config.root, '/config/express'))(app);
+    require(path.join(process.env.root, '/config/express'))(app);
     //Bootstrap routes
-    require(path.join(config.root, '/config/routes'))(app);
+    require(path.join(process.env.root, '/config/routes'))(app);
     //Start the app by listening on <port>
-    app.listen(config.port, function () {
+    app.listen(process.env.PORT, function () {
         callback(app);
     });
 }
