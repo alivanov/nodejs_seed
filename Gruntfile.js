@@ -103,8 +103,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['jshint', 'mocha', 'env:dev', 'concurrent']);
-  grunt.registerTask('build', ['jshint', 'mochaTest']);
-  grunt.registerTask('mocha', ['env:test', 'mochaTest']);
+  grunt.registerTask('default', ['mocha', 'env:dev', 'concurrent']);
+  grunt.registerTask('mocha', ['jshint', 'env:test', 'mochaTest']);
 
 };

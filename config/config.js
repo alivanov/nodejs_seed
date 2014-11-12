@@ -3,6 +3,11 @@ module.exports = {
     // Firebase Endpoints
     //------------------------------
     firebase: {
-        url: 'https://value.firebaseio.com/'
+        test: {
+            url: 'https://valuetest.firebaseio.com'
+        },
+        development: {
+            url: 'https://value.firebaseio.com/'
+        }
     }
 };

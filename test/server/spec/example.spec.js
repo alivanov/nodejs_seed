@@ -4,7 +4,6 @@
 // Core modules
 //--------------------------------
 var path = require('path');
-var sinon = require('sinon');
 //--------------------------------
 // Local modules
 //--------------------------------
@@ -13,7 +12,6 @@ var http_test_utils = require(path.join(root, '/test/server/utils/http'));
 
 describe('HTTP tests:', function () {
     var app = null;
-    var sandbox = null;
     var base_address = 'http://127.0.0.1:' + process.env.PORT;
 
     before(function (done) {
@@ -24,15 +22,6 @@ describe('HTTP tests:', function () {
         });
     });
 
-    beforeEach(function () {
-        // Create sandbox
-        sandbox = sinon.sandbox.create();
-    });
-
-    afterEach(function () {
-        sandbox.restore();
-    });
-
     describe('root controller', function () {
         it('should serve the root url', function (done) {
             var url = '';
@@ -41,7 +30,6 @@ describe('HTTP tests:', function () {
                 body.data.should.be.eql({});
                 done();
             });
-
         });
     });
 
@@ -68,7 +56,6 @@ describe('HTTP tests:', function () {
                 body.should.be.equal('<h1>Internal server error!</h1><br/><span>500</span><div id="error-message-box"><div id="error-stack-trace"><pre><code>Error: This is an error!</code></pre></div></div>');
                 done();
             });
-
         });
     });
 
