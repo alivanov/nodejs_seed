@@ -35,7 +35,7 @@ module.exports = function (app) {
         app.use(function (req, res, next) {
             res.simpleJsonApiResponse = function (err, response) {
                 if (err) {
-                    return res.json(500, {message: 'No data received from the back end services!'});
+                    return res.json(500, {error: err});
                 } else {
                     return res.json(response);
                 }

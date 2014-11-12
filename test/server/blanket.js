@@ -5,5 +5,5 @@ var _ = require('lodash');
 process.setMaxListeners(0);
 require('blanket')({
     // Only files that match the pattern will be instrumented
-    pattern: _.map(['/app', '/config'], function (path) { return process.env.rootFolder + path; })
+    pattern: _.map(['/app', '/config'], function (path) { return process.env.ROOT_FOLDER + path; })
 });
