@@ -21,6 +21,8 @@ then
 
 	$ grunt mocha
 
+get the coverage here: test/server/coverage/server-side0coverage.html
+
 ### Deploying to Heroku
 
 ```
