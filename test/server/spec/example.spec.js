@@ -33,14 +33,6 @@ describe('HTTP tests:', function () {
         sandbox.restore();
     });
 
-    describe('simple DESCRIBE', function () {
-        it('simple IT', function (done) {
-            var val = 1;
-            val.should.be.equal(1);
-            done();
-        });
-    });
-
     describe('root controller', function () {
         it('should serve the root url', function (done) {
             var url = '';
@@ -53,12 +45,27 @@ describe('HTTP tests:', function () {
         });
     });
 
-    describe('page not fount error', function () {
-        it('should serve requests with incorrect urls', function (done) {
+    describe('Error handler', function () {
+        it('should serve 404 error', function (done) {
             var url = '/not_exist';
             http_test_utils.simple_get(base_address, url, function (err, res, body) {
                 res.statusCode.should.be.equal(404);
-                body.should.be.ok;
+                body.should.be.equal('<h1>Oops something went wrong</h1><br/><span>404</span><div id="error-message-box"><div id="error-stack-trace"><pre><code>404: page not found</code></pre></div></div>');
+                done();
+            });
+
+        });
+
+        it('should serve 500 error', function (done) {
+
+            app.get('/internal_error', function (req, res, next) {
+                return next(new Error("This is an error!"));
+            });
+
+            var url = '/internal_error';
+            http_test_utils.simple_get(base_address, url, function (err, res, body) {
+                res.statusCode.should.be.equal(500);
+                body.should.be.equal('<h1>Internal server error!</h1><br/><span>500</span><div id="error-message-box"><div id="error-stack-trace"><pre><code>Error: This is an error!</code></pre></div></div>');
                 done();
             });
 

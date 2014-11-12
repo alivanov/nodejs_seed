@@ -43,28 +43,32 @@ module.exports = function (app) {
             next();
         });
 
-        // express-winston logger makes sense BEFORE the router.
-        app.use(expressWinston.logger({
-            transports: [
-                new winston.transports.Console({
-                    json: true,
-                    colorize: true
-                })
-            ]
-        }));
+        if (process.env.NODE_ENV !== 'test') {
+            // express-winston logger makes sense BEFORE the router.
+            app.use(expressWinston.logger({
+                transports: [
+                    new winston.transports.Console({
+                        json: true,
+                        colorize: true
+                    })
+                ]
+            }));
+        }
 
         app.use(app.router);
 
-        // express-winston errorLogger makes sense AFTER the router.
-        app.use(expressWinston.errorLogger({
-            transports: [
-                new winston.transports.Console({
-                    json: true,
-                    colorize: true
-                }),
-                new (winston.transports.File)({ filename: process.env.ROOT_FOLDER + '/logs/error.log' })
-            ]
-        }));
+        if (process.env.NODE_ENV !== 'test') {
+            // express-winston errorLogger makes sense AFTER the router.
+            app.use(expressWinston.errorLogger({
+                transports: [
+                    new winston.transports.Console({
+                        json: true,
+                        colorize: true
+                    }),
+                    new (winston.transports.File)({filename: process.env.ROOT_FOLDER + '/logs/error.log'})
+                ]
+            }));
+        }
 
         // Handle 404
         app.use(function (req, res) {
