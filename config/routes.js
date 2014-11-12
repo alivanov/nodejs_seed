@@ -6,4 +6,6 @@ module.exports = function (app) {
     app.get('/', function (req, res) {
         res.simpleJsonApiResponse(null, helpers.getSuccessApiResponse());
     });
+
+    require(path.join(root, 'app/controllers/api/firebase')).configure(app, helpers);
 };

@@ -17,7 +17,8 @@
     "jade": "1.7.x",
     "express.io": "1.1.x",
     "winston": "0.8.x",
-    "express-winston": "0.2.x"
+    "express-winston": "0.2.x",
+    "firebase": "2.0.x"
   },
 
   "devDependencies": {
