@@ -4,7 +4,6 @@
 // Core modules
 //--------------------------------
 var path = require('path');
-var sinon = require('sinon');
 //--------------------------------
 // Local modules
 //--------------------------------
@@ -13,30 +12,12 @@ var http_test_utils = require(path.join(root, '/test/server/utils/http'));
 
 describe('HTTP tests:', function () {
     var app = null;
-    var sandbox = null;
     var base_address = 'http://127.0.0.1:' + process.env.PORT;
 
     before(function (done) {
         // Initialize Express app and start server in test mode
         http_test_utils.initialize_app(function (new_app) {
             app = new_app;
-            done();
-        });
-    });
-
-    beforeEach(function () {
-        // Create sandbox
-        sandbox = sinon.sandbox.create();
-    });
-
-    afterEach(function () {
-        sandbox.restore();
-    });
-
-    describe('simple DESCRIBE', function () {
-        it('simple IT', function (done) {
-            var val = 1;
-            val.should.be.equal(1);
             done();
         });
     });
@@ -49,7 +30,6 @@ describe('HTTP tests:', function () {
                 body.data.should.be.eql({});
                 done();
             });
-
         });
     });
 
@@ -61,7 +41,6 @@ describe('HTTP tests:', function () {
                 body.should.be.ok;
                 done();
             });
-
         });
     });
 

@@ -4,20 +4,27 @@
 var path = require('path'),
     http = require('http'),
     express = require('express.io'),
+    Firebase = require('firebase'),
     request = require('request');
 
+//--------------------------------
+// Local modules
+//--------------------------------
+var root = process.env.ROOT_FOLDER,
+    config = require(path.join(root, 'config/config'));
+
 function initialize_app(callback) {
-    // Init application
+    var firebaseRootRef = new Firebase(config.firebase[process.env.NODE_ENV].url);
+
     var app = express();
     app.server = http.createServer(app);
     app.io();
-    //express settings
+
     require(path.join(process.env.ROOT_FOLDER, '/config/express'))(app);
-    //Bootstrap routes
-    require(path.join(process.env.ROOT_FOLDER, '/config/routes'))(app);
-    //Start the app by listening on <port>
+    require(path.join(process.env.ROOT_FOLDER, '/config/routes'))(app, firebaseRootRef);
+
     app.listen(process.env.PORT, function () {
-        callback(app);
+        callback(app, firebaseRootRef);
     });
 }
 exports.initialize_app = initialize_app;
